@@ -1,0 +1,82 @@
+{% load static  %}
+<!doctype html>
+<html lang="en">
+    {% include 'frontend/head.html' %}
+
+<body>
+    {% include 'frontend/navigation.html' %}
+    <!-- inner banner -->
+    <section class="inner-banner py-5">
+        <div class="w3l-breadcrumb py-lg-5">
+            <div class="container pt-sm-5 pt-4 pb-sm-4">
+                <h4 class="inner-text-title font-weight-bold pt-5">About Us</h4>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>About</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section ">
+        <div class="container py-md-5 ">
+            
+            <div class="row">
+                <form method="post" class="col-md-12 col-sm-12 col-xl-12 col-lg-12" action="{% url 'frontend:addquery' %}" enctype="multipart/form-data">
+                    <div class="form-group-lg">
+                      <label for="exampleInputEmail1">Name</label>
+                      {% csrf_token %}
+                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">email</label>
+                        <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">phone</label>
+                        <input type="text" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+
+
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Subject</label>
+                      <input type="text" name="subject" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">message</label>
+                        <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    {% if messages %} {% for message in messages %} {{ message }} {% endfor %}
+                    {% endif %}
+                  </form>
+            </div>
+            
+        </div>
+    </section>
+   
+
+   
+        <div class="container" style="display:none !important">
+            <h3 class="title-style text-center mb-lg-5 mb-4">Our Amazing Chef's</h3>
+            <div class="row">
+
+            </div>
+
+
+        </div>
+
+  
+ 
+
+    {% include 'frontend/footer.html' %}
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+    </button>
+    {% include 'frontend/footerscript.html' %}
+</body>
+
+</html>
